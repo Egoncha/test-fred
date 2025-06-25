@@ -222,7 +222,7 @@ def hardware_control():
     # loop = input("closed loop or open loop:")
     init_time = time.time()
     temp_list = []
-    time_threshold = 15
+    time_threshold = 3
     temp = 0
     while True:
         try:
@@ -251,7 +251,7 @@ def hardware_control():
                         else:
                             print(f"Pre-Heating under action, current temperature is {temp_avg}")
                     temp_list = []
-                    time_threshold += 15
+                    time_threshold += 3
             elif testing == "motor":
                 extruder.stepper_control_loop()
 
