@@ -136,7 +136,7 @@ class Extruder:
     def temperature_control_loop(self, current_time: float):
         """Closed loop control of the temperature of the extruder for desired diameter"""
         if current_time - self.previous_time <= Extruder.SAMPLE_TIME:
-            return
+            return 0
         try:
             target_temperature = 95
             kp = 1.0
@@ -219,7 +219,7 @@ def hardware_control():
         print(f"Error in hardware control: {e}")
 
     testing = input("motor or heater:")
-    loop = input("closed loop or open loop:")
+    # loop = input("closed loop or open loop:")
     init_time = time.time()
     temp_list = []
     time_threshold = 0
@@ -228,11 +228,11 @@ def hardware_control():
         try:
             current_time = time.time() - init_time
             if testing == "heater":
-                if loop == "open":
-                    temp = extruder.temperature_open_loop_control(current_time)
+                # if loop == "open":
+                temp = extruder.temperature_open_loop_control(current_time)
 
-                elif loop == "close":
-                    temp = extruder.temperature_control_loop(current_time)
+                # elif loop == "close":
+                #     temp = extruder.temperature_control_loop(current_time)
 
 
                 temp_list.append(temp)
@@ -242,7 +242,7 @@ def hardware_control():
                     if not len(temp_list) == 0:
                         temp_avg = sum(temp_list)/len(temp_list)
                         if temp_avg > 93:
-                            print(f"Pre-Heating complete, total time was {time.time()-init_time}")
+                            print(f"Pre-Heating complete, total time was {(time.time()-init_time):.2f}")
                             break
                         else:
                             print(f"Pre-Heating under action, current temperature is {temp_avg}")
