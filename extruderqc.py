@@ -240,7 +240,7 @@ def hardware_control():
                 if ((time.time()-init_time)>time_threshold):
                     print("TESTING")
                     if not len(temp_list) == 0:
-                        for num in temp:
+                        for num in temp_list:
                             if type(num) != type(None):
                                 temp_avg+= temp
                         temp_avg = temp_avg/len(temp)
