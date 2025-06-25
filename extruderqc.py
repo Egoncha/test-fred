@@ -238,6 +238,8 @@ def hardware_control() -> None:
 
                 if ((time.time()-init_time)>time_threshold):
                     print("testing")
+                    print(type(temp))
+                    break
                     if not len(temp_list) == 0:
                         temp_avg = sum(temp_list)/len(temp_list)
                         if temp_avg > 93:
@@ -247,7 +249,7 @@ def hardware_control() -> None:
                             print(f"Pre-Heating under action, current temperature is {temp_avg}")
                     temp_list = []
                     time_threshold += 15
-            elif testing == "heater":
+            elif testing == "motor":
                 extruder.stepper_control_loop()
                 if ((time.time()-init_time)>time_threshold):
                     break
