@@ -236,9 +236,9 @@ def hardware_control():
 
 
                 temp_list.append(temp)
-
+                
                 if ((time.time()-init_time)>time_threshold):
-
+                    print("TESTING")
                     if not len(temp_list) == 0:
                         temp_avg = sum(temp_list)/len(temp_list)
                         if temp_avg > 93:
