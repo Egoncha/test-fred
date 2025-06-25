@@ -251,7 +251,7 @@ def hardware_control():
             elif testing == "motor":
                 extruder.stepper_control_loop()
 
-                if ((time.time()-init_time)>(time_threshold+10)):
+                if ((time.time()-init_time)>(time_threshold+60)):
                     break
             time.sleep(0.05)
         except Exception as e:
