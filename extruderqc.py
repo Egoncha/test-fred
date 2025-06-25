@@ -120,7 +120,7 @@ class Extruder:
         """Move the stepper motor constantly"""
         try:
             #variable to set rpm to a variable
-            setpoint_rpm = 5.0
+            setpoint_rpm = 30.0
             delay = (60 / setpoint_rpm / Extruder.STEPS_PER_REVOLUTION /
                     Extruder.FACTOR[Extruder.DEFAULT_MICROSTEPPING])
             GPIO.output(Extruder.DIRECTION_PIN, 1)
@@ -251,7 +251,7 @@ def hardware_control():
             elif testing == "motor":
                 extruder.stepper_control_loop()
 
-                if ((time.time()-init_time)>(time_threshold+15)):
+                if ((time.time()-init_time)>(time_threshold+10)):
                     break
             time.sleep(0.05)
         except Exception as e:
