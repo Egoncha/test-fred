@@ -224,6 +224,7 @@ def hardware_control():
     temp_list = []
     time_threshold = 3
     temp = 0
+    temp_avg = 0
     while True:
         try:
             current_time = time.time() - init_time
