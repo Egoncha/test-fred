@@ -208,7 +208,7 @@ class Extruder:
             print(f"Error in temperature open loop control: {e}")
 
 
-def hardware_control() -> None:
+def hardware_control():
     """Thread to handle hardware control"""
     time.sleep(1)
     GPIO.setmode(GPIO.BCM)
@@ -238,6 +238,7 @@ def hardware_control() -> None:
 
                 if ((time.time()-init_time)>time_threshold):
                     print("testing")
+                    print(temp)
                     print(type(temp))
                     break
                     if not len(temp_list) == 0:
