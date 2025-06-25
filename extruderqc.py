@@ -175,7 +175,7 @@ class Extruder:
     def temperature_open_loop_control(self, current_time: float):
         """Open loop control of the temperature using PWM"""
         if current_time - self.previous_time <= Extruder.SAMPLE_TIME:
-            return
+            return 0
 
         try:
             pwm_value = 50
