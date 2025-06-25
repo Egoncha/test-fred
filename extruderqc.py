@@ -230,9 +230,12 @@ def hardware_control():
             if testing == "heater":
                 if loop == "open":
                     temp = extruder.temperature_open_loop_control(current_time)
+                    print(type(temp))
 
                 elif loop == "close":
                     temp = extruder.temperature_control_loop(current_time)
+                    print(type(temp))
+
 
                 temp_list.append(temp)
 
