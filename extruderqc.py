@@ -172,7 +172,7 @@ class Extruder:
             print(f"Error in temperature control loop: {e}")
 
 
-    def temperature_open_loop_control(self, current_time: float) -> None:
+    def temperature_open_loop_control(self, current_time: float):
         """Open loop control of the temperature using PWM"""
         if current_time - self.previous_time <= Extruder.SAMPLE_TIME:
             return
@@ -222,7 +222,7 @@ def hardware_control() -> None:
     loop = input("closed loop or open loop:")
     init_time = time.time()
     temp_list = []
-    time_threshold = 15
+    time_threshold = 0
     temp = 0
     while True:
         try:
