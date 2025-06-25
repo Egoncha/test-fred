@@ -133,7 +133,7 @@ class Extruder:
             print(f"Error in stepper control loop: {e}")
 
 
-    def temperature_control_loop(self, current_time: float) -> None:
+    def temperature_control_loop(self, current_time: float):
         """Closed loop control of the temperature of the extruder for desired diameter"""
         if current_time - self.previous_time <= Extruder.SAMPLE_TIME:
             return
