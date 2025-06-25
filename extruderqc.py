@@ -230,20 +230,15 @@ def hardware_control():
             if testing == "heater":
                 if loop == "open":
                     temp = extruder.temperature_open_loop_control(current_time)
-                    print(type(temp))
 
                 elif loop == "close":
                     temp = extruder.temperature_control_loop(current_time)
-                    print(type(temp))
 
 
                 temp_list.append(temp)
 
                 if ((time.time()-init_time)>time_threshold):
-                    print("testing")
-                    print(temp)
-                    print(type(temp))
-                    break
+
                     if not len(temp_list) == 0:
                         temp_avg = sum(temp_list)/len(temp_list)
                         if temp_avg > 93:
