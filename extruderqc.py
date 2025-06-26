@@ -218,7 +218,7 @@ def hardware_control():
     except Exception as e:
         print(f"Error in hardware control: {e}")
 
-    testing = input("motor or heater:")
+    testing = input("motor or heater or temperature:")
     # loop = input("closed loop or open loop:")
     init_time = time.time()
     temp_list = []
