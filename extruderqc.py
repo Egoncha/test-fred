@@ -265,7 +265,7 @@ def hardware_control():
                     break
             elif testing == "temperature":
 
-                temp = temp_list.append(Extruder.temperature_reader)
+                temp = temp_list.append(Extruder.temperature_reader())
                 temp_list.append(temp)
                 print(type(temp))
                 if((time.time()-init_time)>(5)):
