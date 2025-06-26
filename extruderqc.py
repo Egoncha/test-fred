@@ -264,9 +264,9 @@ def hardware_control():
                 if ((time.time()-init_time)>(time_threshold)):
                     break
             elif testing == "temperature":
-                
-                temp_list.append(Extruder.temperature_reader)
 
+                temp = temp_list.append(Extruder.temperature_reader)
+                temp_list.append(temp)
                 if((time.time()-init_time)>(5)):
                     for num in temp_list:
                         if type(num) != type(None):
@@ -274,6 +274,7 @@ def hardware_control():
                             length += 1
                     temp_avg = temp_avg / length
                     print(f"Current temperature is {temp_avg}")
+                    break
             time.sleep(0.05)
         except Exception as e:
             print(f"Error in hardware control loop: {e}")
