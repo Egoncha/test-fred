@@ -125,7 +125,6 @@ class Extruder:
                     Extruder.FACTOR[Extruder.DEFAULT_MICROSTEPPING])
             GPIO.output(Extruder.DIRECTION_PIN, 1)
             GPIO.output(Extruder.STEP_PIN, GPIO.HIGH)
-            print("MOVING")
             time.sleep(delay)
             GPIO.output(Extruder.STEP_PIN, GPIO.LOW)
             time.sleep(delay)
