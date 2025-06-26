@@ -225,6 +225,7 @@ def hardware_control():
     time_threshold = 3
     temp = 0
     temp_avg = 0
+    length = 0
     while True:
         try:
             current_time = time.time() - init_time
@@ -244,7 +245,8 @@ def hardware_control():
                         for num in temp_list:
                             if type(num) != type(None):
                                 temp_avg+= num
-                        temp_avg = temp_avg/len(temp_list)
+                                length += 1
+                        temp_avg = temp_avg/length
                         # temp_avg = sum(temp_list)/len(temp_list)
                         if temp_avg > 93:
                             print(f"Pre-Heating complete, total time was {(time.time()-init_time):.2f}")
@@ -258,6 +260,16 @@ def hardware_control():
 
                 if ((time.time()-init_time)>(time_threshold)):
                     break
+            elif testing == "temperature":
+                temp_list.append(Thermistor.get_temperature(Extruder.channel_0))
+
+                if((time.time()-init_time)>(5)):
+                    for num in temp_list:
+                        if type(num) != type(None):
+                            temp_avg += num
+                            length += 1
+                    temp_avg = temp_avg / length
+                    print(f"Current temperature is {temp_avg}")
             time.sleep(0.05)
         except Exception as e:
             print(f"Error in hardware control loop: {e}")
