@@ -207,6 +207,9 @@ class Extruder:
         except Exception as e:
             print(f"Error in temperature open loop control: {e}")
 
+    def temperature_reader(self):
+        return Thermistor.get_temperature(self.channel_0)
+
 
 def hardware_control():
     """Thread to handle hardware control"""
@@ -261,7 +264,8 @@ def hardware_control():
                 if ((time.time()-init_time)>(time_threshold)):
                     break
             elif testing == "temperature":
-                temp_list.append(Thermistor.get_temperature(Extruder.channel_0))
+                
+                temp_list.append(Extruder.temperature_reader)
 
                 if((time.time()-init_time)>(5)):
                     for num in temp_list:
