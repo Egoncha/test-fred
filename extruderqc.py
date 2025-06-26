@@ -208,7 +208,7 @@ class Extruder:
             print(f"Error in temperature open loop control: {e}")
 
     def temperature_reader(self):
-        return Thermistor.get_temperature(self.channel_0)
+        return Thermistor.get_temperature(self.channel_0.voltage)
 
 
 def hardware_control():
