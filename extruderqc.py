@@ -120,7 +120,7 @@ class Extruder:
         """Move the stepper motor constantly"""
         try:
             #variable to set rpm to a variable
-            setpoint_rpm = 60
+            setpoint_rpm = .3
             delay = (60 / setpoint_rpm / Extruder.STEPS_PER_REVOLUTION /
                     Extruder.FACTOR[Extruder.DEFAULT_MICROSTEPPING])
             GPIO.output(Extruder.DIRECTION_PIN, 1)
