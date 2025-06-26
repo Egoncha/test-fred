@@ -243,8 +243,8 @@ def hardware_control():
                     if not len(temp_list) == 0:
                         for num in temp_list:
                             if type(num) != type(None):
-                                temp_avg+= temp
-                        temp_avg = temp_avg/len(temp)
+                                temp_avg+= num
+                        temp_avg = temp_avg/len(temp_list)
                         # temp_avg = sum(temp_list)/len(temp_list)
                         if temp_avg > 93:
                             print(f"Pre-Heating complete, total time was {(time.time()-init_time):.2f}")
